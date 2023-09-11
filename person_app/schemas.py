@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class PersonBase(BaseModel):
-    fullname: str
+    name: str
 
 class PersonCreate(PersonBase):
     pass
