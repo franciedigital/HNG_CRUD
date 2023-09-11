@@ -34,17 +34,28 @@ def index():
     return {"message": "Welcome to hng stage two"}
 
 @app.post("/api", response_model=schemas.Person)
-def create_person(person: schemas.PersonCreate, db: Session = Depends(get_db)):
+def create_user(person: schemas.PersonCreate, db: Session = Depends(get_db)):
     new_person = person
     db_person = personInstance.create_person(db=db, person=new_person)
 
     return db_person
 
 @app.get("/api/{user_id}", response_model=schemas.Person)
-def get_person(user_id: int, db: Session = Depends(get_db)):
+def get_user(user_id: int, db: Session = Depends(get_db)):
     db_person = personInstance.get_user_by_id(user_id=user_id, db=db)
     
     if db_person is None:
         raise HTTPException(status_code=404, detail="User not found")
     return db_person
+
+@app.delete("/api/{user_id}")
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    db_person = personInstance.get_user_by_id(user_id=user_id, db=db)
+
+    if db_person is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    deleted_user = personInstance.delete_user_by_id(user_id=user_id, db=db)
+    if deleted_user:
+        return {"message": f"User with ID {user_id} has been deleted"}
+    raise HTTPException(status_code=500, detail="Failed to delete user")
     

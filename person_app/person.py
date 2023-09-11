@@ -34,5 +34,18 @@ class Person:
     
     def get_user_by_id(self, user_id: int, db: Session):
         return db.query(models.Person).filter(models.Person.id==user_id).first()
+    
+    def delete_user_by_id(self, user_id: int, db: Session):
+        user = db.query(models.Person).filter(models.Person.id == user_id).first()
+    
+        if user:
+            # If the user exists, delete them from the database
+            db.delete(user)
+            db.commit()
+            return True 
+        else:
+            return False  # Indicate that the user was not found
+
+
 
         
