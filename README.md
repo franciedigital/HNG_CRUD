@@ -68,7 +68,7 @@ Before running the API, you need the following prerequisites:
 ### Run the application
 
 ```bash
-uvicorn person_app.main:app --reload
+uvicorn src.main:app --reload
 ```
 
 ### Creating a New Person
