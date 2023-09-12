@@ -31,7 +31,7 @@ def get_db():
 
 @app.get("/")
 def index():
-    return {"message": "Welcome to hng stage two"}
+    return {"message": "Welcome to Francie hng stage two"}
 
 
 @app.post("/api", response_model=schemas.Person)
