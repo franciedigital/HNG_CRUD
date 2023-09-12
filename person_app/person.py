@@ -1,11 +1,7 @@
 from datetime import datetime
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from fastapi import HTTPException
 import logging
-import random
-import time
-import json
 
 from . import models, schemas
 
