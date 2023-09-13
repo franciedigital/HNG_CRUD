@@ -101,7 +101,6 @@ To update a person's details by name, send a PUT request to `/api/user_id` with 
 curl -X PUT -H "Content-Type: application/json" -d '{"name": "Jane Doe"}' http://localhost:8000/api/user_id?name=John%20Doe
 ```
 
-
 ### Updating Person Details
 
 To update a person's details by name, send a PUT request to `/api/user_id` with the `name` query parameter and a JSON body containing the updated information.
@@ -111,7 +110,6 @@ To update a person's details by name, send a PUT request to `/api/user_id` with 
 ```
 curl -X PUT -H "Content-Type: application/json" -d '{"name": "Jane Doe"}' http://localhost:8000/api/user_id?name=John%20Doe
 ```
-
 
 ### Deleting a Person
 
@@ -123,15 +121,26 @@ To delete a person by name, send a DELETE request to `/api/user_id` with the `na
 curl -X DELETE http://localhost:8000/api/user_id?name=Jane%20Doe
 ```
 
+### Testing
+
+Testing the API can be done using tools like Postman or by writing scripts in Python using the requests library. You should test each CRUD operation:
+
+1. Adding a new person (e.g., "Mark Essien").
+2. Fetching details of a person.
+3. Modifying the details of an existing person.
+4. Removing a person.
+
+```
+pytest
+```
+
 ### Database Modeling (Bonus)
 
 As a bonus feature, we provide a UML diagram representing the database structure and relationships. Please refer to the provided diagram for a visual representation of the database schema and how different entities are related.
 
-
 ### Dynamic Parameter Handling
 
 The API is flexible and can handle dynamic input. You can provide a name (or other details) to perform operations using that name. For example, if you pass "Mark Essien," you can perform all CRUD operations on "Mark Essien."
-
 
 ### Documentation
 
@@ -143,4 +152,7 @@ For detailed documentation on the API, including:
 - Instructions for setting up and deploying the API locally or on a server.
 
 Please refer to the [DOCUMENTATION](DOCUMENTATION.md) file.
-````
+
+```
+
+```
